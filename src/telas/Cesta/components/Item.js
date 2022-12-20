@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Image, StyleSheet, FlatList } from 'react-native';
 
-import Texto from '../../../componentes/Texto';
+import Texto from '../../../components/Texto';
 
 export default function Item({ item: { nome, imagem } }) {
   return <View style={estilos.item}>

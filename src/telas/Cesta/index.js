@@ -1,12 +1,12 @@
 import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 
-import Texto from '../../componentes/Texto';
+import Texto from '../../components/Texto';
 
-import Topo from '../../componentes/Topo';
+import Topo from '../../components/Topo';
 import useTextos from '../../hooks/useTextos';
-import Detalhes from './componentes/Detalhes';
-import Item from './componentes/Item';
+import Detalhes from './components/Detalhes';
+import Item from './components/Item';
 
 export default function Cesta({ detalhes, itens, produtor }) {
   const { topoCesta, tituloItens } = useTextos();

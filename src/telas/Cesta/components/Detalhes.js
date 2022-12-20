@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 
 import useTextos from '../../../hooks/useTextos';
-import Texto from '../../../componentes/Texto';
+import Texto from '../../../components/Texto';
 
 export default function Detalhes({ nome, produtor, descricao, preco }) {
   const { botaoComprar } = useTextos();

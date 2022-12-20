@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
 
-import Produtor from './componentes/Produtor';
-import Topo from './componentes/Topo';
+import Produtor from './components/Produtor';
+import Topo from './components/Topo';
 import useProdutores from '../../hooks/useProdutores';
 import useTextos from '../../hooks/useTextos';
 
