@@ -7,13 +7,15 @@ import MelhoresProdutoresRotas from './MelhoresProdutoresRotas';
 
 import Coracao from '../assets/coracao.svg';
 import Home from '../assets/home.svg';
+import { StyleSheet } from 'react-native';
 
 const Tab = createBottomTabNavigator()
 
 export default function AppRotas() {
   return (
     <NavigationContainer>
-      <Tab.Navigator screenOptions={({ route }) => ({ 
+      <Tab.Navigator 
+        screenOptions={({ route }) => ({ 
           headerShown: false,
           tabBarActiveTintColor: '#2A9F85',
           tabBarInactiveTintColor: '#C7C7C7',
@@ -24,7 +26,10 @@ export default function AppRotas() {
               Icon = Coracao;
             }
 
-            return <Icon color={color} />;
+            return <Icon color={color} width={20} height={20}/>;
+          },
+          tabBarLabelStyle: {
+            fontSize: 15
           }
         })}
       >
