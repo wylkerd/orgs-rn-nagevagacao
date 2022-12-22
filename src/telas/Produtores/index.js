@@ -30,6 +30,9 @@ export default function Produtores({ melhoresProdutores }) {
         setExibeMensagem(false);
       }, 3000);
     }
+
+    // Todo retorno do useEffect é executado antes da proxima chamada do useEffect. Desta forma terá apenas um timeout executando por vez.
+    return () => clearTimeout(timeout);
   }, [timestampCompra])
 
   const TopoLista = () => {
