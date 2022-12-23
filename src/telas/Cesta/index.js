@@ -5,13 +5,13 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import Texto from '../../components/Texto';
 
 import Topo from '../../components/Topo';
-import useTextos from '../../hooks/useTextos';
+import {useLinguagem} from '../../hooks/useLinguagem';
 import Detalhes from './components/Detalhes';
 import Item from './components/Item';
 
 export default function Cesta() {
   const route = useRoute();
-  const { topoCesta, tituloItens } = useTextos();
+  const { textosLingua } = useLinguagem();
 
   const { detalhes, itens, produtor } = route.params;
 
@@ -22,10 +22,10 @@ export default function Cesta() {
       keyExtractor={({ nome }) => nome }
       ListHeaderComponent={() => {
         return <>
-          <Topo titulo={topoCesta} />
+          <Topo titulo={textosLingua?.topoCesta} />
           <View style={estilos.cesta}>
             <Detalhes {...detalhes} produtor={produtor} />
-            <Texto style={estilos.titulo}>{ tituloItens }</Texto>
+            <Texto style={estilos.titulo}>{ textosLingua?.tituloItens }</Texto>
           </View>
         </>
       }}

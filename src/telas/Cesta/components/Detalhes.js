@@ -2,12 +2,12 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Image, StyleSheet, View, TouchableOpacity } from 'react-native';
 
-import useTextos from '../../../hooks/useTextos';
 import Texto from '../../../components/Texto';
+import { useLinguagem } from '../../../hooks/useLinguagem'
 
 export default function Detalhes({ nome, produtor, descricao, preco }) {
   const navigation = useNavigation();
-  const { botaoComprar } = useTextos();
+  const { textosLingua, setLingua } = useLinguagem();
 
   return <>
     <Texto style={estilos.nome}>{ nome }</Texto>
@@ -29,7 +29,7 @@ export default function Detalhes({ nome, produtor, descricao, preco }) {
       //   compra: { nome, timestamp: + new Date() } 
       // })}
     >
-      <Texto style={estilos.textoBotao}>{ botaoComprar }</Texto>
+      <Texto style={estilos.textoBotao}>{ textosLingua?.botaoComprar }</Texto>
     </TouchableOpacity>
   </>
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
-import useTextos from '../../hooks/useTextos';
+import { useLinguagem } from '../../hooks/useLinguagem';
 
 import VoltarSVG from '../../assets/voltar.svg';
 import sucesso from '../../assets/sucesso.png';
@@ -10,13 +10,8 @@ import sucesso from '../../assets/sucesso.png';
 export default function Resumo() {
   const navigation = useNavigation();
   const route = useRoute();
-  const {
-    mensagemCompra,
-    topoCompra,
-    tituloCompra,
-    botaoHomeCompra,
-    botaoProdutorCompra
-  } = useTextos();
+
+  const { textosLingua } = useLinguagem()
 
   return (
   <View style={estilos.tela}>
@@ -28,26 +23,26 @@ export default function Resumo() {
         <VoltarSVG />
       </TouchableOpacity>
 
-      <Text style={estilos.topoTexto}>{topoCompra}</Text>
+      <Text style={estilos.topoTexto}>{textosLingua?.topoCompra}</Text>
     </View>
 
     <View style={estilos.conteudo}>
       <Image source={sucesso} style={estilos.sucesso} />
 
       <View style={estilos.textos}>
-        <Text style={estilos.titulo}>{tituloCompra}</Text>
-        <Text style={estilos.mensagem}>{mensagemCompra}</Text>
+        <Text style={estilos.titulo}>{textosLingua?.tituloCompra}</Text>
+        <Text style={estilos.mensagem}>{textosLingua?.mensagemCompra}</Text>
 
         <TouchableOpacity
           style={estilos.botao}
           onPress={() => navigation.navigate('HomeScreen', route.params)}>
-          <Text style={estilos.textoBotao}>{botaoHomeCompra}</Text>
+          <Text style={estilos.textoBotao}>{textosLingua?.botaoHomeCompra}</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[estilos.botao, estilos.botaoProdutor]}
           onPress={() => navigation.navigate('Produtor', route.params)}>
-          <Text style={[estilos.textoBotao, estilos.textoBotaoProdutor ]}>{botaoProdutorCompra}</Text>
+          <Text style={[estilos.textoBotao, estilos.textoBotaoProdutor ]}>{textosLingua?.botaoProdutorCompra}</Text>
         </TouchableOpacity>
       </View>
     </View>

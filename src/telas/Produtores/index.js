@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, StyleSheet } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
+import useProdutores from '../../hooks/useProdutores';
+import { useLinguagem } from '../../hooks/useLinguagem'
 
 import Produtor from './components/Produtor';
 import Topo from './components/Topo';
-import useProdutores from '../../hooks/useProdutores';
-import useTextos from '../../hooks/useTextos';
 
 export default function Produtores({ melhoresProdutores }) {
   const navigation = useNavigation();
   const route = useRoute();
+  const lista = useProdutores(melhoresProdutores);
+  const { textosLingua, setLingua } = useLinguagem();
 
   const [ exibeMensagem, setExibeMensagem ] = useState(false);
 
-  const lista = useProdutores(melhoresProdutores);
-  const { tituloProdutores, mensagemCompra } = useTextos();
+  useEffect(() => setLingua("en") ,[])
 
   const nomeCompra = route.params?.compra.nome;
   const timestampCompra = route.params?.compra.timestamp;
-  const mensagemCompleta = mensagemCompra?.replace('$NOME', nomeCompra);
+  const mensagemCompleta = textosLingua?.mensagemCompra?.replace('$NOME', nomeCompra);
 
   useEffect(() => {
     setExibeMensagem(!!nomeCompra); // !! negação da negação, para certificar que a variavél será um Boolean na verificação
@@ -38,8 +39,8 @@ export default function Produtores({ melhoresProdutores }) {
   const TopoLista = () => {
     return <>
       <Topo melhoresProdutores={melhoresProdutores} />
-      { exibeMensagem && <Text style={estilos.compra}>{ mensagemCompleta }</Text> }
-      <Text style={estilos.titulo}>{tituloProdutores}</Text>
+      { exibeMensagem && <Text style={estilos.compra}>{ textosLingua?.mensagemCompleta }</Text> }
+      <Text style={estilos.titulo}>{textosLingua?.tituloProdutores}</Text>
     </>
   }
 

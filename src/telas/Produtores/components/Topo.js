@@ -2,16 +2,16 @@ import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
 
 import logo from '../../../assets/logo.png';
-import useTextos from '../../../hooks/useTextos';
+import { useLinguagem } from '../../../hooks/useLinguagem';
 
 export default function Topo({ melhoresProdutores }) {
-  const { boasVindas, legenda, legendaMelhoresProdutores } = useTextos();
+  const { textosLingua } = useLinguagem()
 
   return <>
     <View style={estilos.topo}>
       <Image source={logo} style={estilos.imagem} />
-      <Text style={estilos.boasVindas}>{melhoresProdutores ? "" : boasVindas}</Text>
-      <Text style={estilos.legenda}>{melhoresProdutores ? legendaMelhoresProdutores : legenda}</Text>
+      <Text style={estilos.boasVindas}>{melhoresProdutores ? "" : textosLingua?.boasVindas}</Text>
+      <Text style={estilos.legenda}>{melhoresProdutores ? textosLingua?.legendaMelhoresProdutores : textosLingua?.legenda}</Text>
     </View>    
   </>
 }
